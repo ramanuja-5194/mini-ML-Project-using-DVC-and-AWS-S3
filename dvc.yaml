@@ -3,8 +3,8 @@ stages:
     cmd: python src/dataIngestion.py
     deps:
     - src/dataIngestion.py
-    # params:
-    # - dataIngestion.test_size
+    params:
+    - dataIngestion.test_size
     outs:
     - data/raw
   preProcessing:
@@ -19,8 +19,8 @@ stages:
     deps:
     - data/interim
     - src/featureEngineering.py
-    # params:
-    # - featureEngineering.max_features
+    params:
+    - featureEngineering.max_features
     outs:
     - data/processed
   dataTraining:
@@ -28,9 +28,9 @@ stages:
     deps:
     - data/processed
     - src/dataTraining.py
-    # params:
-    # - dataTraining.n_estimators
-    # - dataTraining.random_state
+    params:
+    - dataTraining.n_estimators
+    - dataTraining.random_state
     outs:
     - models/model.pkl
   modelEvaluation:
